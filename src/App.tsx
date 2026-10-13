@@ -17,7 +17,8 @@ type MatchedMember = { member: Member; matchScore: number; matchedSkills: string
 type Recommendation = { members: MatchedMember[]; coveredSkills: string[]; missingSkills: string[]; coverage: number; averageMatch: number }
 type AuthUser = { email: string; name: string; role: string }
 
-const apiUrl = import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8081/api'
+const rawApiUrl = import.meta.env.VITE_API_URL || '/api'
+const apiUrl = rawApiUrl.replace(/\/+$/, '')
 const suggestedSkills = ['React', 'Spring Boot', 'User research', 'Python', 'UI/UX', 'PostgreSQL', 'Machine learning', 'Product strategy']
 const starterSkills = ['React', 'Spring Boot', 'UI/UX', 'Product strategy']
 
